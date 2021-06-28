@@ -120,7 +120,7 @@ const reset_board = () => {
   winner.classList.remove("playerWin");
   winner.classList.remove("computerWin");
   winner.classList.remove("draw");
-  winner.innerText = "";
+  winner.textContent = "";
   display_board();
 };
 
