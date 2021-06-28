@@ -82,9 +82,9 @@ const check_for_winner = () => {
 //the main display board. updates progressively as the game moves on
 const display_board = () => {
   board_container.innerHTML = ""
-  play_board.forEach((e, i) => {
+  play_board.forEach((evt, i) => {
     board_container.innerHTML += `<div id="block_${i}" class="block" onclick="addPlayerMove(${i})">${play_board[i]}</div>`
-    if (e == player || e == computer) {
+    if (evt == player || evt == computer) {
       document.querySelector(`#block_${i}`).classList.add("occupied");
     }
   });
@@ -96,9 +96,9 @@ const game_loop = () => {
   check_for_winner();
 }
 //adding a player move
-const addPlayerMove = e => {
-  if (!board_filled && play_board[e] == "") {
-    play_board[e] = player;
+const addPlayerMove = evt => {
+  if (!board_filled && play_board[evt] == "") {
+    play_board[evt] = player;
     game_loop();
     addComputerMove();
   }
