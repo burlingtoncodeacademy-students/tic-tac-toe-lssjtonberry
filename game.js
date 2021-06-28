@@ -67,15 +67,15 @@ const check_match = () => {
 const check_for_winner = () => {
   let result = check_match()
   if (result == player) {
-    winner.innerText = "You Rock!!";
+    winner.textContent = "You Rock!!";
     winner.classList.add("playerWin");
     board_filled = true
   } else if (result == computer) {
-    winner.innerText = "The CPU won man. Get your head in the game.";
+    winner.textContent = "The CPU won man. Get your head in the game.";
     winner.classList.add("computerWin");
     board_filled = true
   } else if (board_filled) {
-    winner.innerText = "You tied?! o.O";
+    winner.textContent = "You tied?! o.O";
     winner.classList.add("draw");
   }
 };
