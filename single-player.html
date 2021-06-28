@@ -8,25 +8,30 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <header>
-    <nav> <!--nav bar with text hyperlinks to each of the main pages-->
+    <nav> <!--Nav bar with links to all three pages-->
     <a href="/single-player.html">Single Player</a> 
     <a href="/index.html">Tic Tac Toe</a>
     <a href="/multiplayer.html">Multiplayer</a> 
     </nav>
     </div>
 </header>
-<body>
-    <div class="container"> <!--setup for the tic tac toe board-->
-        <h1>You against the CPU</h1>
-        <div class="arena">
-        </div>
+<body> <!--Making the board using grid-->
+    <div class="board"><!--the meat of the board itself with nine spots for the future game. I would name them and trim borders of the appropriate sides to really drive the look down but I don't remember if we learned that in class.-->
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+      </div> 
     <div>
-        <h2 id="winner"></h2>
-        <button onclick="reset_board()">START</button> <!--set up so that the reset board function from game.js is loaded when you click on this button-->
-        <button onclick="">RESET</button>
-        <button onclick="">REPLAY</button>
+        <a href="/single-player.html">START</a><!--linking the start button to refresh the page so would that qualify as working?-->
+        RESTART
+        REPLAY
     </div>
-    <script src="game.js"></script>
 </body>
-<footer>Enjoy :D! -an aspiring Web Developer</footer>
+<footer>I will walk anybody anytime through this</footer>
 </html>

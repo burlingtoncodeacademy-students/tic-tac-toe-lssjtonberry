@@ -8,20 +8,24 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <header>
-    <div id="title"><a href="/index.html">Tic Tac Toe</div> <!--text which Links to the main landing page>
+  <header>
+    <nav> <!--Nav bar with links to all three pages-->
+    <a href="/single-player.html">Single Player</a> 
+    <div id="title"><a href="/index.html">Tic Tac Toe</a></div>
+    <a href="/multiplayer.html">Multiplayer</a> 
+    </nav>
+    </div>
+</header>
     
 </header>
 <body>
-    <div class="choices"> <!--a class to encapsulate both images to let me make formatting changes to both-->
-    <div class="firstgame"> <!-- class for the first image to let me set up a text overlay -->
-        <img src="/imgs/single.jpg" width="750" height="750" alt="Single-Player">
-      <div class="fadedbox"> <!-- making a separate box that appears when you hover over the single player image-->
-        <div class="title text"> <a href="/single-player.html">Single Player</a></div></div> <!--text that appears along with the box that links to the single player page-->
-    </div>
-    <div class="secondgame"> <!-- essentially the same idea as the firstgame. however, this is for the multiplayer side of the page(i.e., the box and text will appear when you hover over the specified image-->-->
-        <img src="/imgs/multi.jpg" width="750" height="750" alt="Multiplayer">
-      <div class="fadedbox2">
-        <div class="title2 text2"> <a href="/multiplayer.html">Multiplayer</a></div></div>
+    <div class="firstgame"> <!--referencing image and text with hyperlink for single player tic tac toe. the idea was that cats are stereotypically solitary creatures...therefore they'd be better suited for a solo experience(i.e., single player)-->
+        <img src="/imgs/single.jpg" width="500" height="500" alt="Single-Player">
+        <div id="Single"><a href="/single-player.html">Single Player</a></div>
+    </div></div>
+    <div class="secondgame"><!--referencing image and text with hyperlink for multiplayer tic tac toe. the logic here are that dogs are typically more people oriented creatures...therefore better suited for an experience that involves multiple people(i.e., multiplayer)-->
+        <img src="/imgs/multi.jpg" width="500" height="500" alt="Multiplayer">
+        <div id="Multi"><a href="/multiplayer.html">Multiplayer</a></div>
       </div>
     </div>
        </div>
@@ -29,5 +33,5 @@
        
        
 </body>
- <footer><p>Courtesy of an aspiring Web Developer. Excuse any bugs you come across. He's training to SQUASH them XD</p></footer>
+ <footer><p>-tonberry</p></footer>
 </html>
