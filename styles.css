@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
 
-
+/*general formatting*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family:'Ubuntu', sans-serif;
 }
-
+/*edits to the board specifically*/
 .container {
   min-height: 100vh;
   display: flex;
@@ -32,7 +32,7 @@ animation-timing-function: ease-in-out;
 -webkit-animation-delay: 0ms;
 -webkit-animation-timing-function: ease-in-out;
 }
-
+/*animation for the header*/
 @keyframes slidein {
   0%{
     transform: translate3d(0, 0, 0);
@@ -42,7 +42,12 @@ animation-timing-function: ease-in-out;
     
 }}
 
-
+#title {
+  display: flex;
+  justify-content: center;
+  font-size: xxx-large;
+  background-color: #0ff3e8;
+}
 
 h1 {
   font-size: 5rem;
@@ -77,6 +82,7 @@ h2 {
   grid-template-columns: auto auto auto;
 }
 
+/*formatting both images on the landing page so they appear in a row*/
 .choices {
   display: flex;
   flex-direction: row;
@@ -84,7 +90,7 @@ h2 {
   background-color: #6900af;
   }
   
-
+/*targetting each block on the tic tac toe board*/
 .block {
   display: flex;
   width: 100px;
@@ -113,7 +119,7 @@ h2 {
 .win:hover {
   background: #6900af;
 }
-
+/*block clusters to help make that tic tac toe board shape*/
 #block_0,
 #block_1,
 #block_2 {
@@ -138,6 +144,88 @@ h2 {
   border-right: none;
 }
 
+/*adjustments to the single player landing page image to make a text overly(i.e., making "single player" appear when you hover over it*/
+.firstgame {
+  cursor: pointer;
+  height: 750px;
+  width: 750px;
+  text-align: center;
+}
+/*making a box to fit over the image*/
+.firstgame .fadedbox {
+  background-color: #666666;
+  color: #fff;
+  position: absolute;
+  top: 55px;;
+  left: 11px;
+  transition: all 300ms ease-out;
+  opacity: 0;
+  width: 750px;
+  height: 750px;
+  padding: 130px 20px;
+}
+.firstgame:hover .fadedbox {
+  opacity: 0.8;
+}
+/*adjusting the text*/
+.firstgame .text {
+  transition: all 300ms ease-out;
+  transform: translateY(30px);
+}
+.firstgame .title {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+}
+.firstgame:hover .title,
+.firstgame:focus .title {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/*Same steps as the above "firstgame" for the single player image. secondgame equates to the multiplayer image. the goal is the same(i.e., let the user see "multiplayer appear when they hover over the second image)*/
+.secondgame {
+  cursor: pointer;
+  height: 750px;
+  width: 750px;
+  text-align: center;
+  
+}
+.secondgame .fadedbox2 {
+  background-color: #666666;
+  top: 55px;
+  right: 0px;
+  color: #fff;
+  transition: all 300ms ease-out;
+  position: absolute;
+  opacity: 0;
+  width: 750px;
+  height: 750px;
+  padding: 130px 20px;
+}
+.secondgame:hover .fadedbox2 {
+  opacity: 0.8;
+}
+.secondgame .text2 {
+  transition: all 300ms ease-out;
+  transform: translateY(30px);
+}
+.secondgame .title2 {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+}
+.secondgame:hover .title2,
+.secondgame:focus .title2 {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/*formatting for the buttons that appear below the board*/
 button {
   outline: none;
   border: 4px solid rgb(0, 0, 0);
@@ -177,16 +265,6 @@ button:hover {
   cursor: pointer;
 }
 
-footer{
-  display: flex;
-  justify-content: center;
-  align-self: auto;
-  font-family: 'Kirang Haerang', cursive;
-  font-size: x-large;
-  background-color: #0ff3e8;
-  border-style: dotted;
-}
-
 nav{
   display: flex;
   justify-content: space-between;
@@ -201,52 +279,7 @@ nav:hover{
   transition: all .2ms;
 }
 
-#title {
-  display: flex;
-  justify-content: center;
-  font-size: xxx-large;
-  background-color: #0ff3e8;
-}
-
-.firstgame {
-  cursor: pointer;
-  height: 750px;
-  width: 750px;
-  text-align: center;
-}
-
-.firstgame .fadedbox {
-  background-color: #666666;
-  color: #fff;
-  position: absolute;
-  top: 55px;;
-  left: 11px;
-  transition: all 300ms ease-out;
-  opacity: 0;
-  width: 750px;
-  height: 750px;
-  padding: 130px 20px;
-}
-.firstgame:hover .fadedbox {
-  opacity: 0.8;
-}
-.firstgame .text {
-  transition: all 300ms ease-out;
-  transform: translateY(30px);
-}
-.firstgame .title {
-  font-size: 2.5em;
-  text-transform: uppercase;
-  opacity: 0;
-  transition-delay: 0.2s;
-  transition-duration: 0.3s;
-}
-.firstgame:hover .title,
-.firstgame:focus .title {
-  opacity: 1;
-  transform: translateY(0px);
-}
-
+/*changing the design of hyperlinked text*/
 a:link { text-decoration: none; }
 
 a:visited { text-decoration: none; }
@@ -261,41 +294,15 @@ a:active { text-decoration: none; }
   color: #030303;
 }
 
-.secondgame {
-  cursor: pointer;
-  height: 750px;
-  width: 750px;
-  text-align: center;
-  
+/*formatting the footer*/
+footer{
+  display: flex;
+  justify-content: center;
+  align-self: auto;
+  font-family: 'Kirang Haerang', cursive;
+  font-size: x-large;
+  background-color: #0ff3e8;
+  border-style: dotted;
 }
-.secondgame .fadedbox2 {
-  background-color: #666666;
-  top: 55px;
-  right: 0px;
-  color: #fff;
-  transition: all 300ms ease-out;
-  position: absolute;
-  opacity: 0;
-  width: 750px;
-  height: 750px;
-  padding: 130px 20px;
-}
-.secondgame:hover .fadedbox2 {
-  opacity: 0.8;
-}
-.secondgame .text2 {
-  transition: all 300ms ease-out;
-  transform: translateY(30px);
-}
-.secondgame .title2 {
-  font-size: 2.5em;
-  text-transform: uppercase;
-  opacity: 0;
-  transition-delay: 0.2s;
-  transition-duration: 0.3s;
-}
-.secondgame:hover .title2,
-.secondgame:focus .title2 {
-  opacity: 1;
-  transform: translateY(0px);
-}
+
+
