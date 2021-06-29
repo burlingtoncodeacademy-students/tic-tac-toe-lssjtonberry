@@ -25,13 +25,14 @@ body {
 }
 
 
+/*I kept my h1 style even though it has no use right now because I'd like to use again somehow for part 2. This is my very first css animation I created so gosh darn it I want to use it. This was for another PowerPoint like effect. Google revealed making fade in effect required messing with the opacity. 0 means its not visible and 1 is supposed to mean it is.*/
 h1 {
   font-size: 5px;
   animation-name: first;
-  animation-duration: 4s;
+  animation-duration: 4s;       
   animation-delay: .5ms;
   
-}
+}         
 
 @keyframes first {
   0%   {opacity:0;}
@@ -41,12 +42,6 @@ h1 {
 h1:hover {
 color: #0ff3e8;
 
-}
-
-h2 {
-  margin-top: 1px;
-  font-size: 2px;
-  margin-bottom: 0.5px;
 }
 
 .firstgame{
