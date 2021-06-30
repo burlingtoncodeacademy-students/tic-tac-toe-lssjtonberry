@@ -1,38 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap'); /*took the first font I had away because once I took away the hyperlink edits(for which I googled(but I understand if that looks sketchy since we didn't learn it) how to edit because I didn't like how clunky it looks)....it became useless. I choose Ubuntu as a font because it is my favorite Linux distro and the font looked cool...NOT BECAUSE I TOOK IT FROM ANOTHER REPO*/
 
-/*tried to import fonts I liked front google because you mentioned it in class. There really was a bajillion to choose from and the process was literally as simple as embedding media and I will challenge anyone will tells me I didn't go pick these myself :D*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Ubuntu', sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:#6900af
+}
 
 header {
 animation-name: slidein;
 animation-duration: 4s;
 animation-delay: 0ms;
-animation-timing-function: ease-in-out; /*an option shown to us in class and TO ME...gives the most pleasing result*/
-justify-content: space-between;
+animation-timing-function: ease-in-out;
+-moz-animation-name: slidein;
+-moz-animation-duration: 4s;
+-moz-animation-delay: 0ms;
+-moz-animation-timing-function: ease-in-out;
+-webkit-animation-name: slidein;
+-webkit-animation-duration: 4s;
+-webkit-animation-delay: 0ms;
+-webkit-animation-timing-function: ease-in-out;
 }
 
 @keyframes slidein {
   0%{
     transform: translate3d(0, 0, 0);
-  }                                   /*googled what option to use for this effect because I wanted to recreate one of the common effects you see on powerpoint(it was me who wrote that miro board comment about css being similar to powerpoint on friday :D)*/
+  }
   100%{
-    transform: translate3d(1692px, 0, 0); /*google revealed each digit was the x, y and z axis. I played around a lot with this to get it how I want*/
+    transform: translate3d(1692px, 0, 0);
     
 }}
 
-body {
-  background-color: blueviolet;
-}
 
 
-/*I kept my h1 style even though it has no use right now because I'd like to use again somehow for part 2. This is my very first css animation I created so gosh darn it I want to use it. This was for another PowerPoint like effect. Google revealed making fade in effect required messing with the opacity. 0 means its not visible and 1 is supposed to mean it is.*/
 h1 {
-  font-size: 5px;
+  font-size: 5rem;
+  margin-bottom: 0.5em;
   animation-name: first;
-  animation-duration: 4s;       
+  animation-duration: 4s;
   animation-delay: .5ms;
   
-}         
+}
 
 @keyframes first {
   0%   {opacity:0;}
@@ -40,31 +59,117 @@ h1 {
 }
 
 h1:hover {
+cursor: pointer;
 color: #0ff3e8;
 
 }
 
-.firstgame{
-display: grid;
-float: left
+h2 {
+  margin-top: 1em;
+  font-size: 2rem;
+  margin-bottom: 0.5em;
 }
 
-.secondgame{
+.arena {
   display: grid;
-  float: right;
+  width: 500;
+  height: 500;
+  grid-template-columns: auto auto auto;
 }
 
-#Single{
-text-align: center;
-font-size: xx-large;
+.block {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  border: 5px ridge black;
+  transition: background 0.3s ease-in-out;
 }
 
-#Multi{
-text-align: center;
-font-size: xx-large;
+.block:hover {
+  cursor: pointer;
+  background: #0f72f3;
 }
 
-footer{ /*doesn't wanna stick on the bottom. I tried to compensate on my first trainwreck submit by making the images super big but...that seems like just a stopgap*/
+.occupied:hover {
+  background: #ff3a3a;
+}
+
+.win {
+  background: #0ff3e8;
+}
+
+.win:hover {
+  background: #6900af;
+}
+
+#block_0,
+#block_1,
+#block_2 {
+  border-top: none;
+}
+
+#block_0,
+#block_3,
+#block_6 {
+  border-left: none;
+}
+
+#block_6,
+#block_7,
+#block_8 {
+  border-bottom: none;
+}
+
+#block_2,
+#block_5,
+#block_8 {
+  border-right: none;
+}
+
+button {
+  outline: none;
+  border: 4px solid rgb(0, 0, 0);
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  background: rgb(19, 204, 211);
+  color: white;
+}
+
+.playerWin {
+  color: rgb(12, 8, 14);
+  display: flex;
+  justify-content: center;
+}
+
+.computerWin {
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.draw {
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+}
+
+.draw:hover {
+  color: #0ff3e8;
+  cursor: pointer;
+}
+
+footer{
   display: flex;
   justify-content: center;
   align-self: auto;
@@ -83,6 +188,10 @@ nav{
   color: black;
 }
 
+nav:hover{
+  cursor: pointer;
+  transition: all .2ms;
+}
 
 #title {
   display: flex;
@@ -92,31 +201,100 @@ nav{
 }
 
 .firstgame {
-  height: 500px;
-  width: 500px;
+  cursor: pointer;
+  height: 750px;
+  width: 750px;
+  text-align: center;
+}
+
+.firstgame .fadedbox {
+  background-color: #666666;
+  color: #fff;
+  position: absolute;
+  top: 55px;;
+  left: 11px;
+  transition: all 300ms ease-out;
+  opacity: 0;
+  width: 750px;
+  height: 750px;
+  padding: 130px 20px;
+}
+.firstgame:hover .fadedbox {
+  opacity: 0.8;
+}
+.firstgame .text {
+  transition: all 300ms ease-out;
+  transform: translateY(30px);
+}
+.firstgame .title {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+}
+.firstgame:hover .title,
+.firstgame:focus .title {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
+
+.secondgame a:hover { color: #030303;
+}
+.firstgame a:hover{
+  color: #030303;
 }
 
 .secondgame {
-  height: 500px;
-  width: 500px;
+  cursor: pointer;
+  height: 750px;
+  width: 750px;
+  text-align: center;
+  
+}
+.secondgame .fadedbox2 {
+  background-color: #666666;
+  top: 55px;
+  right: 0px;
+  color: #fff;
+  transition: all 300ms ease-out;
+  position: absolute;
+  opacity: 0;
+  width: 750px;
+  height: 750px;
+  padding: 130px 20px;
+}
+.secondgame:hover .fadedbox2 {
+  opacity: 0.8;
+}
+.secondgame .text2 {
+  transition: all 300ms ease-out;
+  transform: translateY(30px);
+}
+.secondgame .title2 {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+}
+.secondgame:hover .title2,
+.secondgame:focus .title2 {
+  opacity: 1;
+  transform: translateY(0px);
 }
 
-
-.board{
-  display: grid;
-  grid-template-columns: auto auto auto; /*I saw auto as an option immediately for this and many other CSS options we have learned about. I experimented with different sizes but this looked consistently the best. I expect on the otherhand it may have to do with the difficulties with centering*/
-  height: 600px;
-  width: 600px;
-  background-color: #0ff3e8;
-  justify-content: center;
-  align-items: center; /*doesn't seem to help it but I think I'm on the right track*/
+.choices {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+background-color: #6900af;
 }
-.spot{ /*each "spot" where the eventual X's and O's will go*/
-  background-color: beige;
-  border-style: solid;
-  border-color: black;
-  height: 200px;
-  width:200px
-}
-
-

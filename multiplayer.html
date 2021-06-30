@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe: Multiplayer</title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
-<header>
-    <nav> <!--Nav bar with links to all three pages-->
-    <a href="/single-player.html">Single Player</a> 
-    <a href="/index.html">Tic Tac Toe</a>
-    <a href="/multiplayer.html">Multiplayer</a> 
-    </nav>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <!--Nav bar with links to all three pages-->
+        <a href="single-player.html">Single Player</a>
+        <a href="index.html">Tic Tac Toe</a>
+        <a href="multiplayer.html">Multiplayer</a>
+      </nav>
+    </header>
+    <!--separate class for formatting the boards position-->
+    <div class="moveboard">
+      <div class="board">
+        <!--the meat of the board itself with nine spots for the future game. each spot gets its own id-->
+        <div class="spot" id="s1"></div>
+        <div class="spot" id="s2"></div>
+        <div class="spot" id="s3"></div>
+        <div class="spot" id="s4"></div>
+        <div class="spot" id="s5"></div>
+        <div class="spot" id="s6"></div>
+        <div class="spot" id="s7"></div>
+        <div class="spot" id="s8"></div>
+        <div class="spot" id="s9"></div>
+      </div>
     </div>
-</header>
-<body>
-    <div class="board"> <!--the meat of the board itself with nine spots for the future game. I would name them and trim borders of the appropriate sides to really drive the look down but I don't remember if we learned that in class.-->
-        <div class="spot"></div>
-        <div class="spot"></div>
-        <div class="spot"></div>
-        <div class="spot"></div>
-        <div class="spot"></div>
-        <div class="spot"></div>
-        <div class="spot"></div>
-        <div class="spot"></div>
-        <div class="spot"></div>
-      </div> 
-        <a href="/multiplayer.html">START</a></button> <!--linking the start button to refresh the page so would that qualify as working?-->
-        RESET
-        REPLAY
+    <!--working or not working buttons in all their glory-->
+    <div class="movebuttons">
+      <button>START</button>
+      <button disabled="true">RESET</button>
+      <button disabled="true">REPLAY</button>
     </div>
-</body>
-<footer>will walk through this for anybody anytime</footer>
+    <footer>copyright: the lollypop guild of Uz! contact us in a land of pure imagination</footer>
+  </body>
 </html>
