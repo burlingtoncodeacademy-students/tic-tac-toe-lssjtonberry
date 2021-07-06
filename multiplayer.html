@@ -11,10 +11,13 @@
   <body>
     <header>
       <nav>
-        <!--Nav bar with links to all three pages-->
+        <!--Nav bar with links to all three pages. I had to put the timer up here in the nav bar because it pushed my buttons down if I put it in any other place-->
         <a href="single-player.html">Single Player</a>
         <a href="index.html">Tic Tac Toe</a>
         <a href="multiplayer.html">Multiplayer</a>
+        <div id=timer>
+         Time Elapsed: 0:00:00
+        </div>
       </nav>
     </header>
     <!--separate class for formatting the boards position-->
@@ -32,12 +35,23 @@
         <div class="spot" id="s9"></div>
       </div>
     </div>
+    <!-- Status area -->
+    <div id="statuscontainer">
+      <div id="status">Press START to begin</div>
+    </div>
     <!--working or not working buttons in all their glory-->
     <div class="movebuttons">
-      <button>START</button>
-      <button disabled="true">RESET</button>
-      <button disabled="true">REPLAY</button>
+      <!-- Start button -->
+      <div id="startWrapper">
+        <button id="start">START</button>
+      </div>
+      <button id="reset">RESET</button>
+      <button id="replay" disabled="true">REPLAY</button>
     </div>
-    <footer>copyright: the lollypop guild of Uz! contact us in a land of pure imagination</footer>
+    <footer>
+      copyright: the lollypop guild of Uz! contact us in a land of pure
+      imagination
+    </footer>
+    <script src="/scripts/truegame.js"></script>
   </body>
 </html>
