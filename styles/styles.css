@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap"); /*took the first font I had away because once I took away the hyperlink edits(for which I googled(but I understand if that looks sketchy since we didn't learn it) how to edit because I didn't like how clunky it looks)....it became useless. I choose Ubuntu as a font because it is my favorite Linux distro and the font looked cool...NOT BECAUSE I TOOK IT FROM ANOTHER REPO*/
+
+/*tried to import fonts I liked front google because you mentioned it in class. There really was a bajillion to choose from and the process was literally as simple as embedding media and I will challenge anyone will tells me I didn't go pick these myself :D*/
+
+/*part of a googled solution on stackoverflow to help keep the footer ON THE BOTTOM! probably not mobile friendly lol*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+header {
+  animation-name: slidein;
+  animation-duration: 4s;
+  animation-delay: 0ms;
+  animation-timing-function: ease-in-out; /*an option shown to us in class and TO ME...gives the most pleasing result*/
+  justify-content: space-between;
+}
+
+@keyframes slidein {
+  0% {
+    transform: translate3d(0, 0, 0);
+  } /*googled what option to use for this effect because I wanted to recreate one of the common effects you see on powerpoint(it was me who wrote that miro board comment about css being similar to powerpoint on friday :D)*/
+  100% {
+    transform: translate3d(
+      1692px,
+      0,
+      0
+    ); /*google revealed each digit was the x, y and z axis. I played around a lot with this to get it how I want*/
+  }
+}
+
+body {
+  background-color: blueviolet;
+}
+
+/*edits from my first submit that I want to eventually use again. I was proud of my very first CSS animation*/
+h1 {
+  font-size: 5px;
+  animation-name: first;
+  animation-duration: 4s;
+  animation-delay: 0.5ms;
+}
+
+@keyframes first {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+h1:hover {
+  color: #0ff3e8;
+}
+
+
+/*formatting images to be apart from eachother without the need for float*/
+.moveoptions{
+  display:flex;
+  justify-content: space-between;
+}
+
+.firstgame {
+  justify-content: flex-start;
+}
+
+.secondgame {
+  justify-content: flex-end;
+}
+
+/*positioning the smaller text of single and multi under their images*/
+#Single, #Multi {
+  font-size: xx-large;
+  position:relative;
+  left: 40%;
+}
+
+/*the other part of the googled solution to keep the footer grounded*/
+footer {
+  
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  font-family: "Kirang Haerang", cursive;
+  font-size: x-large;
+  background-color: #0ff3e8;
+  border-style: dotted;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0ff3e8;
+  color: black;
+}
+
+/*Edits so that just the title page alone can be centered*/
+#title {
+  display: flex;
+  justify-content: center;
+  font-size: xxx-large;
+  background-color: #0ff3e8;
+}
+
+/*formatting the entire board*/
+.moveboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*the board itself*/
+.board {
+  display: grid;
+  grid-template-columns: auto auto auto; 
+  height: 600px;
+  width: 600px;
+  background-color: #0ff3e8;
+  justify-content: center;
+  align-items: center;
+}
+.spot {
+  /*each "spot" where the eventual X's and O's will go*/
+  background-color:blueviolet;
+  border-style: solid;
+  border-color: black;
+  height: 200px;
+  width: 200px;
+}
+
+/*Moving the buttons center*/
+.movebuttons {
+  display: flex;
+  justify-content: center;
+}
+
+/*Edits to remove the borders of each spot...to really give us that tic tac toe fantasy, haha!*/
+
+#s1, #s2, #s3{
+  border-top: none;
+}
+
+#s1, #s4, #s7{
+  border-left: none;
+}
+
+#s7, #s8, #s9{
+  border-bottom: none;
+}
+
+#s3, #s6, #s9{
+  border-right: none;
+}
+
+#circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background: black;
+  position: relative;
+  top:25%;
+  left:25%;
+}
