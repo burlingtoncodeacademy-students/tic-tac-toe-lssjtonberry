@@ -16,8 +16,9 @@ let playerOneMoves = "";
 let playerTwoMoves = "";
 let firstName = "";
 let secondName = "";
-let addedX = false;
-let addedO = false;
+//X's and O's turns
+let xTurn = false;
+let oTurn = false;
 reset.disabled = true;
 let spotsFilled = 0;
 
@@ -106,7 +107,6 @@ function chooseSides() {
   );
   if (isFactial) {
     alert("Cool by me. Let's move onto player two!");
-    firstName = playerOneName;
   } else {
     alert("Let's run this back again");
     chooseSides();
@@ -129,20 +129,20 @@ function chooseSides() {
 
   //Assigning X or O to each player. Focuses on player one. Then player two gets the remaining choice.
   let firstPick = window.prompt(
-    `Time to pick sides. For the sake of speeding things along for everyone. The choice ${firstName} makes will dictate what ${secondName} gets to play as. Probably not ideal, but hey! You guys will get to play faster :D\nWhat will you choose ${playerOneName}?`
+    `Time to pick sides. For the sake of speeding things along for everyone. The choice ${firstName} makes will dictate what ${secondName} gets to play as. Probably not ideal, but hey! You guys will get to play faster :D\nWhat will you choose ${firstName}?`
   );
   let isTrue = window.confirm(`You entered: ${firstPick}. Are you sure?`);
   if (isTrue) {
     window.alert(`Great! Let's get started!`);
     if (firstPick === "X") {
       playerOneMoves = "X";
-      addedO = true;
+      oTurn = true;
       playerTwoMoves = "O";
       //updating the status area
       status.innerText = `It's ${firstName}'s turn! They are ${playerOneMoves} while ${secondName} is ${playerTwoMoves}`;
     } else if (firstPick === "O") {
       playerOneMoves = "O";
-      addedX = true;
+      xTurn = true;
       playerTwoMoves = "X";
       status.innerText = `It's ${firstName}'s turn! They are ${playerOneMoves} while ${secondName} is ${playerTwoMoves}`;
     }
@@ -153,7 +153,7 @@ function chooseSides() {
     );
     chooseSides();
   }
-  //first function for the timer
+  //starts the game timer
   startClock();
 }
 
@@ -163,19 +163,20 @@ function startingOver() {
   reset = location.reload();
 }
 
-//the actual game. it's a for loop that repeats the options(turns) until the win condition is met
+
+//the actual game. it's a for loop that repeats the options(turns) until the win condition is met. I'm not confident using the for each loop. i will admit
 for (let turn = 0; turn < spot.length; turn++) {
   //event listener: click to add items into board when game begins
   spot[turn].addEventListener("click", function addXO() {
     XOrO();
     //each "turn"
-    //in theory, when a user clicks a spot that's empty with the addedO designator, they will put an O in the spot. Once placed the spot in question is disabled, then the turn switches
-    if (spot[turn].innerHTML.trim() == "" && addedO) {
+    //O's turn. If there's a box with an empty spot 
+    if (spot[turn].innerHTML.trim() == "" && oTurn) {
       spot[turn].innerHTML = "O";
       spot[turn].disabled = true;
       status.innerText = "Player X's Turn";
       //same logic as previous "if" statement, but with user placing X in a given spot
-    } else if (spot[turn].innerHTML.trim() == "" && addedX) {
+    } else if (spot[turn].innerHTML.trim() == "" && xTurn) {
       spot[turn].innerHTML = "X";
       spot[turn].disabled = true;
       status.innerText = "Player O's Turn";
@@ -186,34 +187,36 @@ for (let turn = 0; turn < spot.length; turn++) {
       XOrO();
     }
 
-    //keeps tabs on how many times spaces have been utilized
+    //spots counter which goes up by one everytime a spot is clicked
     spotsFilled++;
 
     //the win condition
     if (xWinning() || oWinning()) {
       status.innerText =
-        "WE HAVE OUR WINNER!!\nPress RESET if you'd like to play another Multiplayer game";
+        "WE HAVE OUR WINNER!!";
     } else {
+      //should that counter reach 9...
       if (spotsFilled === 9) {
         alert("It's a DRAW!\nGame Over man! GAME OVER");
       }
     }
+    //enables reset button
     reset.disabled = false;
   });
 }
 
-//helper function to guide who's turn it is.
+//switching turns(e.g., after O makes a choice, their turn becomes false and X's turns true. and vice versa)
 function XOrO() {
-  if (addedO) {
-    addedX = true;
-    addedO = false;
-  } else if (addedX) {
-    addedO = true;
-    addedX = false;
+  if (oTurn) {
+    xTurn = true;
+    oTurn = false;
+  } else if (xTurn) {
+    oTurn = true;
+    xTurn = false;
   }
 }
 
-//I tried looking for a way to condense this...but both my breakout room classmates and google seem to think it's just a matter of listing each combination(right now anyway)
+//checks for the following combinations of Xs within the given spot ID's innerHTMLs. Should there be a match, they get a message.
 function xWinning() {
   //switching innerHTML to textContent does work, but it makes weird bug that calls matches in favor of player one before they rightfully "win"
   if (
