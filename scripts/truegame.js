@@ -220,14 +220,14 @@ function XOrO() {
 function xWinning() {
   //switching innerHTML to textContent does work, but it makes weird bug that calls matches in favor of player one before they rightfully "win"
   if (
-    (s1.innerHTML && s2.innerHTML && s3.innerHTML) ||
-    (s4.innerHTML && s5.innerHTML && s6.innerHTML) ||
-    (s7.innerHTML && s8.innerHTML && s9.innerHTML) ||
-    (s1.innerHTML && s5.innerHTML && s9.innerHTML) ||
-    (s2.innerHTML && s5.innerHTML && s8.innerHTML) ||
-    (s1.innerHTML && s4.innerHTML && s7.innerHTML) ||
-    (s3.innerHTML && s6.innerHTML && s9.innerHTML) ||
-    (s3.innerHTML && s5.innerHTML && s7.innerHTML)
+    (s1.innerHTML=== "X" && s2.innerHTML=== "X" && s3.innerHTML === "X") ||
+    (s4.innerHTML=== "X" && s5.innerHTML=== "X" && s6.innerHTML=== "X") ||
+    (s7.innerHTML=== "X" && s8.innerHTML=== "X" && s9.innerHTML=== "X") ||
+    (s1.innerHTML=== "X" && s5.innerHTML=== "X" && s9.innerHTML=== "X") ||
+    (s2.innerHTML=== "X" && s5.innerHTML=== "X" && s8.innerHTML=== "X") ||
+    (s1.innerHTML=== "X" && s4.innerHTML=== "X" && s7.innerHTML=== "X") ||
+    (s3.innerHTML=== "X" && s6.innerHTML=== "X" && s9.innerHTML=== "X") ||
+    (s3.innerHTML=== "X" && s5.innerHTML=== "X" && s7.innerHTML=== "X")
   ) {
     alert("Whichever one of y'all decided to go X...WON!!!");
     return true;
@@ -240,15 +240,15 @@ function xWinning() {
 //The same logic as xWinning, just changed over for O's
 function oWinning() {
   if (
-    (s1.innerHTML && s2.innerHTML && s3.innerHTML) ||
-    (s4.innerHTML && s5.innerHTML && s6.innerHTML) ||
-    (s7.innerHTML && s8.innerHTML && s9.innerHTML) ||
-    (s1.innerHTML && s5.innerHTML && s9.innerHTML) ||
-    (s2.innerHTML && s5.innerHTML && s8.innerHTML) ||
-    (s1.innerHTML && s4.innerHTML && s7.innerHTML) ||
-    (s3.innerHTML && s6.innerHTML && s9.innerHTML) ||
-    (s3.innerHTML && s5.innerHTML && s7.innerHTML)
-  ) {
+    (s1.innerHTML=== "O" && s2.innerHTML=== "O" && s3.innerHTML=== "O") ||
+    (s4.innerHTML=== "O" && s5.innerHTML=== "O" && s6.innerHTML=== "O") ||
+    (s7.innerHTML=== "O" && s8.innerHTML=== "O" && s9.innerHTML=== "O") ||
+    (s1.innerHTML=== "O" && s5.innerHTML=== "O" && s9.innerHTML=== "O") ||
+    (s2.innerHTML=== "O" && s5.innerHTML=== "O" && s8.innerHTML=== "O") ||
+    (s1.innerHTML=== "O" && s4.innerHTML=== "O" && s7.innerHTML=== "O") ||
+    (s3.innerHTML=== "O" && s6.innerHTML=== "O" && s9.innerHTML=== "O") ||
+    (s3.innerHTML=== "O" && s5.innerHTML=== "O" && s7.innerHTML=== "O")
+  )  {
     alert("Whichever one of y'all decided to go O...WON!!!");
     return true;
   }
