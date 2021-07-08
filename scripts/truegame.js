@@ -1,4 +1,4 @@
-//grabbing the spot elements
+//assigning variables for specific elements
 let spot = document.getElementsByClassName("spot");
 let status = document.getElementById("status");
 let start = document.getElementById("start");
@@ -20,16 +20,15 @@ let secondName = "";
 let xTurn = false;
 let oTurn = false;
 reset.disabled = true;
-let spotsFilled = 0;
 
-//functions for the game timer. First one starts the clockTick
+//starts the game clock
 function startClock() {
   if (stop == true) {
     stop = false;
     clockTick();
   }
 }
-//this one stops the game timer when the games over...so people can see how long the match went
+//stops the game clock
 function stopClock() {
   if (stop == false) {
     stop = true;
@@ -66,6 +65,7 @@ function clockTick() {
 start.addEventListener("click", () => {
   // sets start button to be disabled
   start.disabled = true;
+  // sets reset button to be disabled
   reset.disabled = true;
   // sets status to begin counting
   status.innerText = "Starting in....";
@@ -74,14 +74,67 @@ start.addEventListener("click", () => {
   timer = setInterval(countUp, 1000);
 });
 
+//switching turns. 
+function XOrO() {
+  if (oTurn) {
+    xTurn = true;
+    oTurn = false;
+  } else if (xTurn) {
+    oTurn = true;
+    xTurn = false;
+  }
+}
+
+//funcion to check for the following combinations of Xs within given spot ID's textContents
+function xWinning() {
+  if (
+    (s1.textContent=== "X" && s2.textContent=== "X" && s3.textContent === "X") ||
+    (s4.textContent=== "X" && s5.textContent=== "X" && s6.textContent=== "X") ||
+    (s7.textContent=== "X" && s8.textContent=== "X" && s9.textContent=== "X") ||
+    (s1.textContent=== "X" && s5.textContent=== "X" && s9.textContent=== "X") ||
+    (s2.textContent=== "X" && s5.textContent=== "X" && s8.textContent=== "X") ||
+    (s1.textContent=== "X" && s4.textContent=== "X" && s7.textContent=== "X") ||
+    (s3.textContent=== "X" && s6.textContent=== "X" && s9.textContent=== "X") ||
+    (s3.textContent=== "X" && s5.textContent=== "X" && s7.textContent=== "X")
+  ) {
+    alert("Whichever one of y'all decided to go X...WON!!!");
+    return true;
+  }
+  //enables reset button again once game is over
+  reset.disabled = false;
+  //stops clock
+  stopClock();
+}
+
+//funcion to check for the following combinations of Os within given spot ID's textContents
+function oWinning() {
+  if (
+    (s1.textContent=== "O" && s2.textContent=== "O" && s3.textContent=== "O") ||
+    (s4.textContent=== "O" && s5.textContent=== "O" && s6.textContent=== "O") ||
+    (s7.textContent=== "O" && s8.textContent=== "O" && s9.textContent=== "O") ||
+    (s1.textContent=== "O" && s5.textContent=== "O" && s9.textContent=== "O") ||
+    (s2.textContent=== "O" && s5.textContent=== "O" && s8.textContent=== "O") ||
+    (s1.textContent=== "O" && s4.textContent=== "O" && s7.textContent=== "O") ||
+    (s3.textContent=== "O" && s6.textContent=== "O" && s9.textContent=== "O") ||
+    (s3.textContent=== "O" && s5.textContent=== "O" && s7.textContent=== "O")
+  )  {
+    alert("Whichever one of y'all decided to go O...WON!!!");
+    return true;
+  }
+  //enables reset button again once game is over
+  reset.disabled = false;
+ //stops clock
+  stopClock();
+}
+
 
 
 function countUp() {
   // increases interval by 1
   interval = interval + 1;
 
+  // set status of interval to count 1...2...3...
   if (interval <= 3) {
-    // set status of interval to count 1...2...3...
     status.innerText = interval;
   } else {
     // changes status to "Begin" indicating that user can now make their move
@@ -101,14 +154,16 @@ function chooseSides() {
   firstName = window.prompt(
     "Welcome to Multiplayer Tic Tac! Here you can 1v1 friends, family, your pets or anybody you want in a classic game of Tic Tac Toe.\nBefore we go forward and pick our sides..let's find out your names. Who's player one?"
   );
-  //getting confirmation that entered name is what player really wants. if they have second thoughts...you can run it back again
+  //getting confirmation that entered name is what player really wants
   let isFactial = window.confirm(
     `You entered: ${firstName}. Is that your name?`
   );
+  
   if (isFactial) {
     alert("Cool by me. Let's move onto player two!");
   } else {
-    alert("Let's run this back again");
+    //alerts player that game will loop back to player one name selection
+    alert("Let's run this back and try again");
     chooseSides();
   }
 
@@ -120,14 +175,14 @@ function chooseSides() {
     `You've entered ${secondName}. Is that YOUR name?`
   );
   if (isTruth) {
+    //alert to move on to picking sides
     alert("AAALLLLLRRRRIIIGGGHGHHHTTYYY THEN. Let's move onto the next step!");
-    playerTwoName = secondName;
   } else {
     alert("Maybe you two wanna switch sides?");
     chooseSides();
   }
 
-  //Assigning X or O to each player. Focuses on player one. Then player two gets the remaining choice.
+  //Assigning X or O to player one. Player two gets leftover choice 
   let firstPick = window.prompt(
     `Time to pick sides. For the sake of speeding things along for everyone. The choice ${firstName} makes will dictate what ${secondName} gets to play as. Probably not ideal, but hey! You guys will get to play faster :D\nWhat will you choose ${firstName}?`
   );
@@ -164,39 +219,37 @@ function startingOver() {
 }
 
 
-//the actual game. it's a for loop that repeats the options(turns) until the win condition is met. I'm not confident using the for each loop. i will admit
-for (let turn = 0; turn < spot.length; turn++) {
+//the actual game. it's a for loop that repeats the options(turns) until the win condition is met
+for (let filled = 0; turn < spot.length; filled++) {
   //event listener: click to add items into board when game begins
-  spot[turn].addEventListener("click", function addXO() {
+  spot[filled].addEventListener("click", function addXO() {
     XOrO();
-    //each "turn"
-    //O's turn. If there's a box with an empty spot 
-    if (spot[turn].textContent.trim() == "" && oTurn) {
-      spot[turn].textContent = "O";
-      spot[turn].disabled = true;
+    if (spot[filled].textContent.trim() == "" && oTurn) {
+      spot[filled].textContent = "O";
+      spot[filled].disabled = true;
       status.innerText = "Player X's Turn";
-      //same logic as previous "if" statement, but with user placing X in a given spot
-    } else if (spot[turn].textContent.trim() == "" && xTurn) {
-      spot[turn].textContent = "X";
-      spot[turn].disabled = true;
+      
+    } else if (spot[filled].textContent.trim() == "" && xTurn) {
+      spot[filled].textContent = "X";
+      spot[filled].disabled = true;
       status.innerText = "Player O's Turn";
     }
-    //If a user clicks on what should now be a disabled spot. gets an alert and they should keep their turn to pick another open spot.
-    else if (spot[turn].textContent == "X" || "O") {
+    
+    else if (spot[filled].textContent == "X" || "O") {
       alert("Sorry but that spots already taken.");
       XOrO();
     }
 
     //spots counter which goes up by one everytime a spot is clicked
-    spotsFilled++;
+    filled++;
 
     //the win condition
     if (xWinning() || oWinning()) {
       status.innerText =
         "WE HAVE OUR WINNER!!";
     } else {
-      //should that counter reach 9...
-      if (spotsFilled === 9) {
+      //alerts that the game is a DRAW if all spots are filled without any matches
+      if (filled === 9) {
         alert("It's a DRAW!\nGame Over man! GAME OVER");
       }
     }
@@ -205,52 +258,3 @@ for (let turn = 0; turn < spot.length; turn++) {
   });
 }
 
-//switching turns(e.g., after O makes a choice, their turn becomes false and X's turns true. and vice versa)
-function XOrO() {
-  if (oTurn) {
-    xTurn = true;
-    oTurn = false;
-  } else if (xTurn) {
-    oTurn = true;
-    xTurn = false;
-  }
-}
-
-//checks for the following combinations of Xs within the given spot ID's textContents. Should there be a match, they get a message.
-function xWinning() {
-  if (
-    (s1.textContent=== "X" && s2.textContent=== "X" && s3.textContent === "X") ||
-    (s4.textContent=== "X" && s5.textContent=== "X" && s6.textContent=== "X") ||
-    (s7.textContent=== "X" && s8.textContent=== "X" && s9.textContent=== "X") ||
-    (s1.textContent=== "X" && s5.textContent=== "X" && s9.textContent=== "X") ||
-    (s2.textContent=== "X" && s5.textContent=== "X" && s8.textContent=== "X") ||
-    (s1.textContent=== "X" && s4.textContent=== "X" && s7.textContent=== "X") ||
-    (s3.textContent=== "X" && s6.textContent=== "X" && s9.textContent=== "X") ||
-    (s3.textContent=== "X" && s5.textContent=== "X" && s7.textContent=== "X")
-  ) {
-    alert("Whichever one of y'all decided to go X...WON!!!");
-    return true;
-  }
-  //enables reset button again once game is over and stops the game timer
-  reset.disabled = false;
-  stopClock();
-}
-
-//The same logic as xWinning, just changed over for O's
-function oWinning() {
-  if (
-    (s1.textContent=== "O" && s2.textContent=== "O" && s3.textContent=== "O") ||
-    (s4.textContent=== "O" && s5.textContent=== "O" && s6.textContent=== "O") ||
-    (s7.textContent=== "O" && s8.textContent=== "O" && s9.textContent=== "O") ||
-    (s1.textContent=== "O" && s5.textContent=== "O" && s9.textContent=== "O") ||
-    (s2.textContent=== "O" && s5.textContent=== "O" && s8.textContent=== "O") ||
-    (s1.textContent=== "O" && s4.textContent=== "O" && s7.textContent=== "O") ||
-    (s3.textContent=== "O" && s6.textContent=== "O" && s9.textContent=== "O") ||
-    (s3.textContent=== "O" && s5.textContent=== "O" && s7.textContent=== "O")
-  )  {
-    alert("Whichever one of y'all decided to go O...WON!!!");
-    return true;
-  }
-  reset.disabled = false;
-  stopClock();
-}
