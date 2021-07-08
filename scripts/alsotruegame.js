@@ -171,18 +171,18 @@ for (let turn = 0; turn < spot.length; turn++) {
     XOrO();
     //each "turn"
     //O's turn. If there's a box with an empty spot 
-    if (spot[turn].innerHTML.trim() == "" && oTurn) {
-      spot[turn].innerHTML = "O";
+    if (spot[turn].textContent.trim() == "" && oTurn) {
+      spot[turn].textContent = "O";
       spot[turn].disabled = true;
       status.innerText = "Player X's Turn";
       //same logic as previous "if" statement, but with user placing X in a given spot
-    } else if (spot[turn].innerHTML.trim() == "" && xTurn) {
-      spot[turn].innerHTML = "X";
+    } else if (spot[turn].textContent.trim() == "" && xTurn) {
+      spot[turn].textContent = "X";
       spot[turn].disabled = true;
       status.innerText = "Player O's Turn";
     }
     //If a user clicks on what should now be a disabled spot. gets an alert and they should keep their turn to pick another open spot.
-    else if (spot[turn].innerHTML == "X" || "O") {
+    else if (spot[turn].textContent == "X" || "O") {
       alert("Sorry but that spots already taken.");
       XOrO();
     }
@@ -216,18 +216,17 @@ function XOrO() {
   }
 }
 
-//checks for the following combinations of Xs within the given spot ID's innerHTMLs. Should there be a match, they get a message.
+//checks for the following combinations of Xs within the given spot ID's textContents. Should there be a match, they get a message.
 function xWinning() {
-  //switching innerHTML to textContent does work, but it makes weird bug that calls matches in favor of player one before they rightfully "win"
   if (
-    (s1.innerHTML=== "X" && s2.innerHTML=== "X" && s3.innerHTML === "X") ||
-    (s4.innerHTML=== "X" && s5.innerHTML=== "X" && s6.innerHTML=== "X") ||
-    (s7.innerHTML=== "X" && s8.innerHTML=== "X" && s9.innerHTML=== "X") ||
-    (s1.innerHTML=== "X" && s5.innerHTML=== "X" && s9.innerHTML=== "X") ||
-    (s2.innerHTML=== "X" && s5.innerHTML=== "X" && s8.innerHTML=== "X") ||
-    (s1.innerHTML=== "X" && s4.innerHTML=== "X" && s7.innerHTML=== "X") ||
-    (s3.innerHTML=== "X" && s6.innerHTML=== "X" && s9.innerHTML=== "X") ||
-    (s3.innerHTML=== "X" && s5.innerHTML=== "X" && s7.innerHTML=== "X")
+    (s1.textContent=== "X" && s2.textContent=== "X" && s3.textContent === "X") ||
+    (s4.textContent=== "X" && s5.textContent=== "X" && s6.textContent=== "X") ||
+    (s7.textContent=== "X" && s8.textContent=== "X" && s9.textContent=== "X") ||
+    (s1.textContent=== "X" && s5.textContent=== "X" && s9.textContent=== "X") ||
+    (s2.textContent=== "X" && s5.textContent=== "X" && s8.textContent=== "X") ||
+    (s1.textContent=== "X" && s4.textContent=== "X" && s7.textContent=== "X") ||
+    (s3.textContent=== "X" && s6.textContent=== "X" && s9.textContent=== "X") ||
+    (s3.textContent=== "X" && s5.textContent=== "X" && s7.textContent=== "X")
   ) {
     alert("Whichever one of y'all decided to go X...WON!!!");
     return true;
@@ -240,14 +239,14 @@ function xWinning() {
 //The same logic as xWinning, just changed over for O's
 function oWinning() {
   if (
-    (s1.innerHTML=== "O" && s2.innerHTML=== "O" && s3.innerHTML=== "O") ||
-    (s4.innerHTML=== "O" && s5.innerHTML=== "O" && s6.innerHTML=== "O") ||
-    (s7.innerHTML=== "O" && s8.innerHTML=== "O" && s9.innerHTML=== "O") ||
-    (s1.innerHTML=== "O" && s5.innerHTML=== "O" && s9.innerHTML=== "O") ||
-    (s2.innerHTML=== "O" && s5.innerHTML=== "O" && s8.innerHTML=== "O") ||
-    (s1.innerHTML=== "O" && s4.innerHTML=== "O" && s7.innerHTML=== "O") ||
-    (s3.innerHTML=== "O" && s6.innerHTML=== "O" && s9.innerHTML=== "O") ||
-    (s3.innerHTML=== "O" && s5.innerHTML=== "O" && s7.innerHTML=== "O")
+    (s1.textContent=== "O" && s2.textContent=== "O" && s3.textContent=== "O") ||
+    (s4.textContent=== "O" && s5.textContent=== "O" && s6.textContent=== "O") ||
+    (s7.textContent=== "O" && s8.textContent=== "O" && s9.textContent=== "O") ||
+    (s1.textContent=== "O" && s5.textContent=== "O" && s9.textContent=== "O") ||
+    (s2.textContent=== "O" && s5.textContent=== "O" && s8.textContent=== "O") ||
+    (s1.textContent=== "O" && s4.textContent=== "O" && s7.textContent=== "O") ||
+    (s3.textContent=== "O" && s6.textContent=== "O" && s9.textContent=== "O") ||
+    (s3.textContent=== "O" && s5.textContent=== "O" && s7.textContent=== "O")
   )  {
     alert("Whichever one of y'all decided to go O...WON!!!");
     return true;
