@@ -14,7 +14,6 @@ restart = document.getElementById("reset");
 
 //game clock variables
 let clock = document.getElementById("timer");
-let clock2 = document.getElementById("timer2");
 let timer;
 let interval = 0;
 let hr = 0;
