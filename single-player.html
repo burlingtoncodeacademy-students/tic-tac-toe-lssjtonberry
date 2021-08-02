@@ -5,54 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe: Single Player</title>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/gamestyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
   </head>
 
   <body>
+    <!--start modal prompting the player to start the game-->
+    <div class="startBox">
+      <header>Tic Tac Toe</header>
+      <div class="content">
+        <div class="title">Press Start to Begin</div>
+        <div class="pressButton">
+          <button class="start">Begin</button>
+        </div>
+      </div>
+    </div>
     <header>
       <nav>
-        <!--Nav bar with links to all three pages-->
+        <!--Nav bar with links to all three pages.-->
         <a href="single-player.html">Single Player</a>
         <a href="index.html">Tic Tac Toe</a>
         <a href="multiplayer.html">Multiplayer</a>
-        <div id=timer>
-         Time Elapsed 0:00:00
-        </div>
       </nav>
     </header>
 
-    <!--separate class for formatting the boards position-->
-    <div class="moveboard">
+    <!-- modal prompting player to choose what option they want -->
+    <div class="choice">
+      <header>Single Player</header>
+      <div class="content">
+        <div class="title">What will you be?</div>
+        <div class="options">
+          <button class="playerX">Player X</button>
+          <button class="playerO">Player O</button>
+        </div>
+      </div>
+    </div>
+    <!-- the board plus the turn indicator w/ a slider -->
+    <div class="game">
+      <div class="details">
+        <div class="players">
+          <span class="Xturn">X's Turn</span>
+          <span class="Oturn">O's Turn</span>
+          <div class="slider"></div>
+        </div>
+      </div>
       <div class="board">
-        <!--the meat of the board itself with nine spots for the future game. each spot gets its own id-->
-        <div class="spot" id="s1"></div>
-        <div class="spot" id="s2"></div>
-        <div class="spot" id="s3"></div>
-        <div class="spot" id="s4"></div>
-        <div class="spot" id="s5"></div>
-        <div class="spot" id="s6"></div>
-        <div class="spot" id="s7"></div>
-        <div class="spot" id="s8"></div>
-        <div class="spot" id="s9"></div>
+        <section>
+          <span class="box1"></span>
+          <span class="box2"></span>
+          <span class="box3"></span>
+        </section>
+        <section>
+          <span class="box4"></span>
+          <span class="box5"></span>
+          <span class="box6"></span>
+        </section>
+        <section>
+          <span class="box7"></span>
+          <span class="box8"></span>
+          <span class="box9"></span>
+        </section>
+        <!--home of the timer and the restart button-->
+        <div class="bottomRow">
+          <div id="timer">Time Elapsed: 0:00:00</div>
+          <div class="button"><button id="reset">Restart</button></div>
+        </div>
       </div>
     </div>
-    <!-- Status area -->
-    <div id="statuscontainer">
-      <div id="status">Press START to begin</div>
+    <!--Shows the user the results of the game...plus a button to replay-->
+    <div class="results">
+      <div class="win"></div>
+      <div class="button"><button>Replay</button></div>
     </div>
-    <!--working or not working buttons in all their glory-->
-    <div class="movebuttons">
-      <!-- Start button -->
-      <div id="startWrapper">
-        <button id="start">START</button>
-      </div>
-      <button id="reset">RESET</button>
-      <button id="replay" disabled="true">REPLAY</button>
-    </div>
+
     <footer>
       copyright: the lollypop guild of Uz! contact us in a land of pure
       imagination
     </footer>
-    <script src="scripts/truegame.js"></script>
+    <script src="scripts/single.js"></script>
   </body>
 </html>
